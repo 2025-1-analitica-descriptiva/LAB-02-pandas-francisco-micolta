@@ -1,10 +1,5 @@
-"""
-Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
-datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y 
-`tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
-librerias de pandas para resolver las preguntas.
-"""
-
+import pandas as pd
+import os
 
 def pregunta_06():
     """
@@ -15,3 +10,16 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+    # Define la ruta al archivo tbl1.csv.
+    # Ten en cuenta que la pregunta menciona 'tbl1.csv' pero tus datos son 'tbl1.tsv'.
+    # Asumiré que es un error en la pregunta y que el archivo real es 'tbl1.tsv'.
+    file_path = os.path.join(os.path.dirname(__file__), "..", "files", "input", "tbl1.tsv")
+    
+    # Carga el archivo TSV en un DataFrame de pandas.
+    df = pd.read_csv(file_path, sep='\t') # Usamos sep='\t' porque los archivos son TSV
+
+    # Obtiene los valores únicos de la columna 'c4', los convierte a mayúsculas
+    # y luego los ordena alfabéticamente antes de convertirlos a una lista.
+    unique_c4_values = sorted(df['c4'].str.upper().unique())
+
+    return unique_c4_values

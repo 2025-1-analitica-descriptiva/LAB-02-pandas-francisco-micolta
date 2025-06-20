@@ -1,10 +1,5 @@
-"""
-Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
-datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y 
-`tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
-librerias de pandas para resolver las preguntas.
-"""
-
+import pandas as pd
+import os
 
 def pregunta_03():
     """
@@ -13,11 +8,25 @@ def pregunta_03():
 
     Rta/
     c1
-    A     8
-    B     7
-    C     5
-    D     6
+    A    8
+    B    7
+    C    5
+    D    6
     E    14
     Name: count, dtype: int64
 
     """
+    # Define the file path.
+    file_path = os.path.join(os.path.dirname(__file__), "..", "files", "input", "tbl0.tsv")
+    
+    # Load the tsv file into a pandas DataFrame
+    df = pd.read_csv(file_path, sep='\t')
+
+    # Get the value counts for column 'c1'
+    # .value_counts() automatically counts the unique occurrences in a Series.
+    counts = df['c1'].value_counts()
+
+    # Sort the results by index (the letters A, B, C...) to match the Rta/ example
+    counts = counts.sort_index()
+
+    return counts

@@ -1,10 +1,5 @@
-"""
-Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
-datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y 
-`tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
-librerias de pandas para resolver las preguntas.
-"""
-
+import pandas as pd
+import os
 
 def pregunta_02():
     """
@@ -14,3 +9,14 @@ def pregunta_02():
     4
 
     """
+    # Define the file path. Based on our previous conversation,
+    # the files are located in 'files/input/' relative to the project root.
+    file_path = os.path.join(os.path.dirname(__file__), "..", "files", "input", "tbl0.tsv")
+    
+    # Load the tsv file into a pandas DataFrame
+    df = pd.read_csv(file_path, sep='\t')
+
+    # Get the number of columns using .shape[1]
+    num_columns = df.shape[1]
+
+    return num_columns
